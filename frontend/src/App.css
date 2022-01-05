@@ -2,17 +2,32 @@
   width: 256px;
 }
 
+.status {
+  top: 2rem;
+  position: absolute;
+  left: 4rem;
+  font-size: large;
+}
+
 .App {
   text-align: center;
   background-image: url("./background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.App-logo {
-  height: 15vmin;
-  pointer-events: none;
-  margin-bottom: 5rem;
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  top: 5rem;
+  top: 0rem;
+  right: 9rem;
+}
+
+.logo {
+  height: 15vmin;
+  margin: 0 1rem;
 }
 
 .App-header {

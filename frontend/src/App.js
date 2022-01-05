@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import useWebSocket, { ReadyState } from "react-use-websocket";
 import logo from "./logo.png";
-import Base from "./Base";
-import Moove from "./Moove";
+import logoJunia from "./logo-junia.png";
+import animation from "./animation.gif";
 
-const delay = 5;
+import Moove from "./Moove";
 
 function App() {
   const [shouldDisplayMoove, setDisplayMoove] = useState(false);
@@ -26,23 +26,24 @@ function App() {
     [ReadyState.UNINSTANTIATED]: "uninstantiated",
   }[readyState];
 
-  useEffect(() => {
-    let timer1 = setTimeout(() => setDisplayMoove(false), delay * 1000);
-
-    return () => {
-      clearTimeout(timer1);
-    };
-  }, [shouldDisplayMoove]);
-
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} alt="Logo" className="App-logo" />
-        {shouldDisplayMoove ? (
-          <Moove lastMessage={lastMessage} />
-        ) : (
-          <Base connectionStatus={connectionStatus} lastMessage={lastMessage} />
+        <div className="status">Status: {connectionStatus}</div>
+        <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
+          <img
+            src={logoJunia}
+            alt="Logo-Junia"
+            className="logo"
+            style={{ paddingTop: "3rem" }}
+          />
+        </div>
+
+        {shouldDisplayMoove && (
+          <img src={animation} alt="loading..." className="Animation" />
         )}
+        <Moove lastMessage={lastMessage} />
       </header>
     </div>
   );
